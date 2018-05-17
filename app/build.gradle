@@ -1,3 +1,6 @@
+// Here just simply import the needed classes from gradleUtils.jar and use them
+import com.gpetuhov.android.gradleutils.FileNameProvider
+
 apply plugin: 'com.android.application'
 
 android {
@@ -14,6 +17,12 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            // Use FileNameProvider to generate output file name
+            outputFileName = new FileNameProvider().getFileName()
         }
     }
 }
