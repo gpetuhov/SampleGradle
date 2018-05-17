@@ -1,5 +1,6 @@
 // Here just simply import the needed classes from gradleUtils.jar and use them
 import com.gpetuhov.android.gradleutils.FileNameProvider
+import com.gpetuhov.android.gradleutils.MyTask
 
 apply plugin: 'com.android.application'
 
@@ -34,4 +35,14 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
+
+// Create Gradle task from MyTask class
+task myTask(type: MyTask) {
+    // Set task group and description
+    group "My group"
+    description "Description of my group"
+
+    // Init task with new value
+    userName = "Bill"
 }
